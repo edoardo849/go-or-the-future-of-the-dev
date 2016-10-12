@@ -1,4 +1,4 @@
-Golang or the future of the dev
+GoLang or the future of the dev
 ===
 
 The free lunch is over. Better yet, the free lunch was already over in 2005 and right now we're starting to pay for it, even though we aren't aware of it.
@@ -19,7 +19,7 @@ Caches have physical limits: the bigger the cache, the slower it gets. Modern CP
 
 ![A modern CPU](./images/Intel_Lynnfield_die1.jpg "A modern CPU")
 
-Over the last decade performance, especially on the server, has been dictated by adding more CPU cores. But multicore CPU comes at a cost too and cannot scale indefinetely: not every application can exploit multicore and the syncronization overhead between the operations hits performance very fast. Some compute-intensive operations that can be massively parallelised (like deep learning, analytics and engineering or simulation) can benefit from GPU-accelerated computing.
+Over the last decade performance, especially on the server, has been dictated by adding more CPU cores. But multicore CPU comes at a cost too and cannot scale indefinitely: not every application can exploit multicore and the synchronization overhead between the operations hits performance very fast. Some compute-intensive operations that can be massively parallelised (like deep learning, analytics and engineering or simulation) can benefit from GPU-accelerated computing.
 
 Much of the improvement in performance in the last two decades has come from architectural improvements:
 
@@ -35,13 +35,13 @@ Much of the improvement in performance in the last two decades has come from arc
 ## The solution, part 1: better software
 All the above points lean toward one crucial point: if we cannot safely rely on the hardware to increase the performance, we need to turn to software. And boy what a mess we have there. 
 
-Most of the traditional programming languages comes from the 90's and uses traditional single-threaded processes. Multi-threading is of course possible but it's messy, complicated and way too expensive. Let's look at the creation of a Thread in Java: the creation of a thread start out at 1Mb, along with a region of memory called a guard page that acts as a guard between one thread's memory and another.
+Most of the traditional programming languages comes from the 90's and uses traditional single-threaded processes. Multi-threading is of course possible but it's messy, complicated and way too expensive. Let's look at a Thread in Java: the creation of a thread start out at 1Mb, along with a region of memory called a guard page that acts as a guard between one thread's memory and another.
 
-This means that, if creating a web server, creating one thread per request will eventualy lead to an `OutOfMemoryError`. Moreover, threads have significant setup and teardown costs because it has to request resources from the OS and return it once its done.
+This means that, if creating a web server, creating one thread per request will eventually lead to an `OutOfMemoryError`. Moreover, threads have significant setup and teardown costs because it has to request resources from the OS and return it once its done.
 
 However, even though most programming languages have *support* for multi-threading, the real problem comes with concurrent execution and the perils of threading-locking, race conditions and deadlocks. For more on the difference between concurrency and parallelism, go see Rob Pike's excellent talk [concurrency is not parallelism](https://blog.golang.org/concurrency-is-not-parallelism). Spoiler: parallelism is doing the same thing at once, while concurrency can involve parallelism, but it's more doing different things at once. As one can quickly see, in the latter case, communication between the "tasks" - or processes - becomes crucial.
 
-Another separate chapter should be dedicated to Object-Oriented-Programming (OOP): in JAVA everythings quickly becomes a pointer which puts lots of preassure on the heap thus running around the CPU, which is not very memory-effective. So what? Are we back to `C`'s `allocs` and `free`? Of course not.
+Another separate chapter should be dedicated to Object-Oriented-Programming (OOP): in JAVA everything quickly becomes a pointer which puts lots of pressure on the heap thus running around the CPU, which is not very memory-effective. So what? Are we back to `C`'s `allocs` and `free`? Of course not.
 
 For best performance on today's hardware in today's world, we need a programming language which:
 
@@ -64,11 +64,11 @@ However, besides all the Babel(s), Typescripts and ES6-ES2016(s) the adoption of
 
 This comes down to several reasons, but especially the relative ease of finding devs (front-end devs are already familiar with the language) and the vast ecosystem of libraries and tools.
 
-Despite the awesomness of the V8 engine and the tricks that can be done on the event loop, NodeJS is single-threaded. As such, it cannot directly use multi-core CPUs even though it is possible to spawn different processes on several threads.
+Despite the awesomeness of the V8 engine and the tricks that can be done on the event loop, NodeJS is single-threaded. As such, it cannot directly use multi-core CPUs even though it is possible to spawn different processes on several threads.
 
-On the other side of the spectrum, GoLang is heavily addressed as the new `C` and especially as a replacement for `C++`. Golang is functional in nature (although it has structs that can be used for OOP), it's compiled and - horror! - it's garbage collected. However, its runtime is incredibly clever and, most importantly, it is designed from the ground-up to exploit multi-cores. Infact, it has its own abstractions over threads (called `goroutines`) that are automatically managed and can communicate with `channels`.
+On the other side of the spectrum, GoLang is heavily addressed as the new `C` and especially as a replacement for `C++`. Golang is functional in nature (although it has structs that can be used for OOP), it's compiled and - horror! - it's garbage collected. However, its runtime is incredibly clever and, most importantly, it is designed from the ground-up to exploit multi-cores. In fact, it has its own abstractions over threads (called `goroutines`) that are automatically managed and can communicate with `channels`.
 
-The creation of a goroutine is very cheap: it's just 2kb (again, a thread requires 1Mb) and the runtime automagically manages them so that they are put on threads when running and rmoved when blocking. Several optimizations can be performed but it's somewhat predictable whether or not a variable will be allocated on the heap or on the stack.
+The creation of a goroutine is very cheap: it's just 2kb (again, a thread requires 1Mb) and the runtime automagically manages them so that they are put on threads when running and removed when blocking. Several optimizations can be performed but it's somewhat predictable whether or not a variable will be allocated on the heap or on the stack.
 
 ## The solution, part 3: better developers
 A common belief seems to be that in the future, it will be easier to do programming. I disagree. I think that actually the inverse is true. And the reason is because if hardware isn't getting any more faster, then better performance is achieved with optimization, and that is hard.
@@ -76,6 +76,13 @@ A common belief seems to be that in the future, it will be easier to do programm
 Optimization requires not only the mastering of the tool (the software) but also an extensive knowledge of the matter (the hardware). Moreover, the developer of the future needs to be even more open-minded than the one of the past. Researchers and Universities are sometimes critical of programming languages like Go - and *sometimes* rightfully so - but the point is not to look at the past and converge on classic OO paradigms, but to improve what is here to stay.
 
 # Conclusion
-In conclusion and to wrap-up, hardware limits are putting more preassure on the software. Even though we will not stop to have faster CPUs due to incremental changes and innovation in the architecture, as developers we need to start to think more of optimization and best-coding and best-development practices. GoLang is the programming language more suited for this kind of development, but that's not enough. Developers needs to understand more about the hardware too to be able to exploit the full range of mult-core and concurrent development. 
+In conclusion and to wrap-up, hardware limits are putting more pressure on the software. Even though we will not stop to have faster CPUs due to incremental changes and innovation in the architecture, as developers we need to start to think more of optimization and best-coding and best-development practices. GoLang is the programming language more suited for this kind of development, but that's not enough. Developers needs to understand more about the hardware too to be able to exploit the full range of mult-core and concurrent development. 
 
-Better developers will have a huge impact on the end user too. Optimized software can run on cheaper and slower hardware. This translates to less expensive cloud servers, higher margins for corporations and overall cost reduction for the end-user. Imagine to run a full-fledged OS with all the capabilities of a modern-day computer on a mobile phone. Think of your mobile phone as your primary and unique computer or to more powerful IoT devices and you can see where optmization can lead innovation in the future.
+Better developers will have a huge impact on the end user too. Optimized software can run on cheaper and slower hardware. This translates to less expensive cloud servers, higher margins for corporations and overall cost reduction for the end-user. Imagine to run a full-fledged OS with all the capabilities of a modern-day computer on a mobile phone. Think of your mobile phone as your primary and unique computer or to more powerful IoT devices and you can see where optimization can lead innovation in the future.
+
+## Credits
+- The idea for this piece comes from a workshop with David Cheney that I have attended during dotGo in Paris. The slides of the workshop can be found [here](https://github.com/davecheney/high-performance-go-workshop).
+- [The Free Lunch Is Over ](http://www.gotw.ca/publications/concurrency-ddj.htm) by Herb Sutter
+- [Communicating Sequential Processes](http://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf) by C.A.R. Hoare 
+- [How goroutines work](http://blog.nindalf.com/how-goroutines-work/) by Krishna Sundarram
+- [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.nke7ozrlm) by Jose Aguinaga
