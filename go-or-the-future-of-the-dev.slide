@@ -54,10 +54,11 @@ Much of the improvement in performance in the last two decades has come from arc
 
 * The free lunch is over
 
-* The solution
-** Better Software
+* The solution in a three part move
 
-* Better Software
+The better-better-better ancient technique (not for the faint-hearted).
+
+* First Move: Better Software
 If we cannot safely rely on the hardware to increase the performance, we need to turn to software.
 
 Most of the traditional programming languages comes from the 90’s and uses traditional single-threaded processes.
@@ -66,10 +67,8 @@ When supported, thread creation is expensive (starts at 1Mb)
 
 We should embrace [[https://blog.golang.org/concurrency-is-not-parallelism][Concurrency over Parallelism]]
 
-* The solution
-** Better Programming Languages
 
-* Better Programming Languages
+* Second Move: Better Programming Languages
 For best performance on today’s hardware in today’s world, we need a programming language which:
 
 - Is compiled, not interpreted.
@@ -80,14 +79,11 @@ For best performance on today’s hardware in today’s world, we need a program
 
 .image images/Golang.png _ 800
 
-* Concurrent Fibonacci
+* Intermission: Concurrent Recursive Fibonacci
 
 .play ./examples/fibonacci.go /START OMIT/,/END OMIT/
 
-* The solution
-** Better Developers
-
-* Better Developers
+* Third Move: Better Developers
 
 If hardware isn’t getting any faster, then better performance is achieved with optimization, and that is hard.
 
