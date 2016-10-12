@@ -1,6 +1,6 @@
 # Usage
 
-This slide deck and supporting material is part of the [_Golang Manchester_](https://www.meetup.com/golang-mcr/) meetup.
+This slide deck and supporting material is part of the [_Golang Manchester_](https://www.meetup.com/golang-mcr/) meetup. Both inspiration and credits goes to the [High Performence Go training](http://dave.cheney.net/training) course by [Dave Cheney](https://github.com/davecheney).
 
 # Installation
 
