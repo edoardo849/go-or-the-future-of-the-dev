@@ -86,3 +86,4 @@ Better developers will have a huge impact on the end user too. Optimized softwar
 - [Communicating Sequential Processes](http://www.cs.cmu.edu/~crary/819-f09/Hoare78.pdf) by C.A.R. Hoare 
 - [How goroutines work](http://blog.nindalf.com/how-goroutines-work/) by Krishna Sundarram
 - [How it feels to learn JavaScript in 2016](https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.nke7ozrlm) by Jose Aguinaga
+- [I/O Multiplexing & Scalable Socket Servers](http://www.drdobbs.com/open-source/io-multiplexing-scalable-socket-servers/184405553) by Ian Barile
