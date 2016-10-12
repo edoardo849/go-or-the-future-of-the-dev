@@ -1,0 +1,92 @@
+Go or the future of the Dev
+Manchester
+12 Oct 2016
+
+Edo Scalafiotti
+edoardo849@gmail.com
+http://medium.com/@edoardo849
+@edoardo849
+
+* License and Materials
+
+This presentation is licensed under the [[https://creativecommons.org/licenses/by/4.0/][Attribution 4.0 International]] licence.
+
+The materials for this presentation are available on GitHub:
+
+.link https://github.com/edoardo849/go-or-the-future-of-the-dev
+
+You are encouraged to remix, transform, or build upon the material, providing you give appropriate credit.
+
+* The free lunch is over
+
+- in 2005 the Moore Law applied to clock speed had stopped
+- 3GHz CPUs for commercial use
+- 4GHz expected in 2006 was only shipped in 2014 "Devil's Canyon"
+- we should have 20GHz CPUs by now: this Mac is running on 2.7GHz
+
+* The CPU
+
+.image images/35years-CPU.png _ 700
+
+* The future in 2005
+
+Back in 2005 the near-term future performance growth drivers were:
+
+- hyperthreading
+- multicore
+- cache
+
+* The future in 2016
+
+Much of the improvement in performance in the last two decades has come from architectural improvements:
+
+- out of order execution (super-scalar)
+- speculative execution
+- vector (SSE) instructions
+
+* A modern CPU
+
+.image images/Intel_Lynnfield_die1.jpg _ 700
+
+* The free lunch is over
+
+* The solution
+** Better Software
+
+* Better Software
+If we cannot safely rely on the hardware to increase the performance, we need to turn to software.
+
+Most of the traditional programming languages comes from the 90’s and uses traditional single-threaded processes.
+
+When supported, thread creation is expensive (starts at 1Mb)
+
+We should embrace [[https://blog.golang.org/concurrency-is-not-parallelism][Concurrency over Parallelism]]
+
+* The solution
+** Better Programming Languages
+
+* Better Programming Languages
+For best performance on today’s hardware in today’s world, we need a programming language which:
+
+- Is compiled, not interpreted.
+- Permits efficient code to be written.
+- Lets programmers talk about memory effectively, think structs vs java objects
+- Has a compiler that produces efficient code, it has to be small code as well, because cache.
+
+
+.image images/Golang.png _ 800
+
+* Concurrent Fibonacci
+
+.play ./examples/fibonacci.go /START OMIT/,/END OMIT/
+
+* The solution
+** Better Developers
+
+* Better Developers
+
+If hardware isn’t getting any faster, then better performance is achieved with optimization, and that is hard.
+
+- better understanding of the architecture
+- mastering of the hardware and software
+- more open-minded 
